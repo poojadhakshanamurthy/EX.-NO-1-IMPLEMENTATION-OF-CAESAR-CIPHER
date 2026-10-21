@@ -16,8 +16,34 @@ STEP-4: Else subtract the key from the plain text.
 STEP-5: Display the cipher text obtained above.
 
 ## PROGRAM:
+```
+#include <stdio.h>
+
+int main()
+{
+    char s[100];
+    int i, key;
+
+    printf("Enter text: ");
+    scanf("%s", s);
+    printf("Enter key: ");
+    scanf("%d", &key);
+
+    for(i = 0; s[i] != '\0'; i++)
+        s[i] += key;
+    printf("Encrypted: %s\n", s);
+
+    for(i = 0; s[i] != '\0'; i++)
+        s[i] -= key;
+    printf("Decrypted: %s\n", s);
+
+    return 0;
+}
+```
 
 ## OUTPUT:
+<img width="1917" height="1026" alt="Screenshot 2026-10-21 143756" src="https://github.com/user-attachments/assets/8c8a88ff-888c-40d2-b5c3-9263d96fcb22" />
+
 
 ## RESULT :
- Thus the implementation of ceasar cipher had been executed successfully.
+Thus the implementation of ceasar cipher had been executed successfully.
