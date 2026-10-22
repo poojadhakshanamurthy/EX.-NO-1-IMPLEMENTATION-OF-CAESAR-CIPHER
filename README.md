@@ -21,28 +21,45 @@ STEP-5: Display the cipher text obtained above.
 
 int main()
 {
-    char s[100];
+    char s[100], e[100];
     int i, key;
 
     printf("Enter text: ");
-    scanf("%s", s);
+    scanf(" %[^\n]", s);
+
     printf("Enter key: ");
     scanf("%d", &key);
+    key = key % 26;
 
     for(i = 0; s[i] != '\0'; i++)
-        s[i] += key;
-    printf("Encrypted: %s\n", s);
+    {
+        if(s[i] >= 'a' && s[i] <= 'z')
+            e[i] = (s[i] - 'a' + key) % 26 + 'a';
+        else if(s[i] >= 'A' && s[i] <= 'Z')
+            e[i] = (s[i] - 'A' + key) % 26 + 'A';
+        else
+            e[i] = s[i];
+    }
+    e[i] = '\0';
 
-    for(i = 0; s[i] != '\0'; i++)
-        s[i] -= key;
-    printf("Decrypted: %s\n", s);
+    printf("Encrypted: %s\n", e);
+
+    for(i = 0; e[i] != '\0'; i++)
+    {
+        if(e[i] >= 'a' && e[i] <= 'z')
+            e[i] = (e[i] - 'a' - key + 26) % 26 + 'a';
+        else if(e[i] >= 'A' && e[i] <= 'Z')
+            e[i] = (e[i] - 'A' - key + 26) % 26 + 'A';
+    }
+
+    printf("Decrypted: %s\n", e);
 
     return 0;
 }
 ```
 
 ## OUTPUT:
-<img width="1917" height="1026" alt="Screenshot 2026-10-21 143756" src="https://github.com/user-attachments/assets/8c8a88ff-888c-40d2-b5c3-9263d96fcb22" />
+<img width="1918" height="1028" alt="Screenshot 2026-10-22 091757" src="https://github.com/user-attachments/assets/faeaf490-ab87-4b98-aa0e-7605f9437196" />
 
 
 ## RESULT :
